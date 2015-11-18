@@ -1,0 +1,59 @@
+{
+  "name": "status",
+  "version": "1.0.0",
+  "description": "status",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "prestart": "npm run build",
+    "test": "node test/*.js",
+    "dev": "nodemon --debug index.js",
+    "lint": "eslint **/*.js && eslint **/*.jsx",
+    "watch": "npm run watch:javascript & npm run watch:css",
+    "watch:javascript": "watchify -t reactify ./src/javascript/main.jsx -o ./public/javascript/bundle.js",
+    "watch:css": "node-sass -w ./src/scss/main.scss ./public/css/main.css",
+    "build": "npm run build:javascript & npm run build:css",
+    "build:javascript": "browserify -t reactify ./src/javascript/main.jsx | uglifyjs -o ./public/javascript/bundle.js",
+    "build:css": "node-sass --output-style compressed ./src/scss/main.scss ./public/css/main.css"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wallcrawler/status.git"
+  },
+  "author": "ronan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wallcrawler/status/issues"
+  },
+  "homepage": "https://github.com/wallcrawler/status#readme",
+  "dependencies": {
+    "aws-sdk": "^2.2.15",
+    "body-parser": "^1.14.1",
+    "browserify": "^12.0.1",
+    "cookie-session": "^1.2.0",
+    "express": "^4.13.3",
+    "jquery": "^2.1.4",
+    "moment": "^2.10.6",
+    "multer": "^1.1.0",
+    "mysql": "^2.9.0",
+    "node-sass": "^3.4.2",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "reactify": "^1.1.1",
+    "sequelize": "^3.13.0",
+    "serve-favicon": "^2.3.0",
+    "uglifyjs": "^2.4.10"
+  },
+  "devDependencies": {
+    "eslint": "^1.9.0",
+    "eslint-plugin-react": "^3.8.0",
+    "nodemon": "^1.8.1",
+    "pre-commit": "^1.1.2",
+    "watchify": "^3.6.0"
+  }
+}

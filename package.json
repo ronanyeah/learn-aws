@@ -1,0 +1,38 @@
+{
+  "name": "learn_aws",
+  "version": "1.0.0",
+  "description": "a wild ride through the amazon cloud",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node tests/*.js",
+    "dev": "nodemon --debug index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronanyeah/learn_aws.git"
+  },
+  "keywords": [
+    "aws",
+    "learn",
+    "ronan"
+  ],
+  "author": "ronan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ronanyeah/learn_aws/issues"
+  },
+  "homepage": "https://github.com/ronanyeah/learn_aws#readme",
+  "dependencies": {
+    "aws-sdk": "^2.2.15",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "multer": "^1.1.0",
+    "mysql": "^2.9.0",
+    "sequelize": "^3.13.0",
+    "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+  }
+}

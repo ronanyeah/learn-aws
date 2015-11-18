@@ -1,0 +1,10 @@
+branch-defaults:
+  master:
+    environment: ronanmccabe
+global:
+  application_name: ronanmccabe.me
+  default_ec2_keyname: null
+  default_platform: 64bit Amazon Linux 2015.09 v2.0.4 running Node.js
+  default_region: eu-west-1
+  profile: eb-cli
+  sc: git
