@@ -17,10 +17,12 @@ https://hackpad.com/Founders-Coders-AWS-Workshop-qzvthpfn1QN
 extras:
 - aws prestart and building
 - billing alerts
-- 
+- eb extensions
+- eb logs
 
 pre -
 go through the repo as well saying quickly what the code does and when everyone is cool with that, start going through the AWS steps
+there might be little things along the way that arent the most efficient
 
 steps-
 1 add icons to taskbar and show them th ui
@@ -46,9 +48,19 @@ set instance role to the one you made
 
 7 as it runs, set up an s3 bucket
 explain cors etc also
-put bucket name in env file
+put bucket name in env file and in eb env vars
 (wouldn't surprise me if there is a native way to do this)
 
+8 add anywhere access to rds database
+
+9 add db envs and look at db in workbench
+
+10 run server
+
+11 upload some files and look at their permissions
+
+12 eb init, choose ireland, choose aplcation. remind them this is their eb permissions at work
+see how gitignore changes
 
 eb deploy docs -
 http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-deploy.html
@@ -80,3 +92,6 @@ http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
 
 service roles
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts-roles.html?console_help=true
+
+s3 docs
+    // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
