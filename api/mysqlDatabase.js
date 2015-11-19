@@ -1,7 +1,10 @@
 'use strict';
 
 var sequelize = require('sequelize');
-var database = module.exports = new sequelize(process.env.RDS_DB_NAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD,
+var database = module.exports = new sequelize(
+  process.env.RDS_DB_NAME,
+  process.env.RDS_USERNAME,
+  process.env.RDS_PASSWORD,
   {
     host: process.env.RDS_HOSTNAME,
     dialect: 'mysql',
@@ -24,8 +27,7 @@ database.define(
       autoIncrement: true
     },
     picture: sequelize.STRING,
-    caption: sequelize.STRING,
-    timestamp: sequelize.DATE
+    caption: sequelize.STRING
   },
   {
     // timestamps: false,
@@ -34,3 +36,13 @@ database.define(
 );
 
 database.sync();
+
+database.models.content.findOrCreate({
+  where: {
+    id: 1
+  },
+  defaults: {
+    picture: 'empty',
+    caption: 'empty'
+  }
+});
