@@ -21,8 +21,6 @@ module.exports = {
   },
 
   updateContent: function(req, res) {
-
-    // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
     var s3Params = {
       Bucket: process.env.S3_BUCKET,
       ContentType: 'image',

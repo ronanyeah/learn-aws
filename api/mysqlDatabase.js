@@ -1,7 +1,7 @@
 'use strict';
 
 var sequelize = require('sequelize');
-var database = module.exports = new sequelize(
+var database  = module.exports = new sequelize(
   process.env.RDS_DB_NAME,
   process.env.RDS_USERNAME,
   process.env.RDS_PASSWORD,
@@ -30,7 +30,6 @@ database.define(
     caption: sequelize.STRING
   },
   {
-    // timestamps: false,
     freezeTableName: true
   }
 );

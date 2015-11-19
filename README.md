@@ -1,107 +1,91 @@
-# learn_aws
-a wild ride through the amazon cloud
+# Founders & Coders AWS Workshop
+A wild ride through the Amazon cloud! Go from nothing to a Full Stack AWS hosted app.
 
-What we will will learn today:
-- how to set up aws security properly
-  > Identity and Access Management (IAM)
-- how to deploy and host a website on aws
-  > elastic beanstalk
-- how to set up online file storage system
-  amazon s3
-- how to set up a mysql database, autolinked to your website
-  > amazon rds
+## What we will will learn today:
+- How to set up AWS security properly.
+  - **Identity and Access Management (IAM)**
+- How to host your website on AWS.
+  - **Elastic Beanstalk**
+- How to deploy your website using the command line.
+   - **EB CLI**
+- How to set up online file storage system for your site.
+  - **Amazon S3**
+- How to set up a MySQL database, autolinked to your site.
+  - **Amazon RDS**
 
-prereqs -
-https://hackpad.com/Founders-Coders-AWS-Workshop-qzvthpfn1QN
+* * *
 
-extras:
-- aws prestart and building
-- billing alerts
-- eb extensions
-- eb logs
-- multi factor
+**Prerequisites:**  
+[Things to Install](https://hackpad.com/Founders-Coders-AWS-Workshop-qzvthpfn1QN)  
+[Bash Script Environment Variables](https://github.com/ronanyeah/bash-export)
 
-pre -
-go through the repo as well saying quickly what the code does and when everyone is cool with that, start going through the AWS steps
-there might be little things along the way that arent the most efficient
+* * *
 
-steps-
-1 add icons to taskbar and show them th ui
+##Step 1 - Check out the UI
+- Add icons to the nav bar.
 
-2 create a role for your app to use. this defines the privileges that your app can use within AWS. attach no policy.
+##Step 2 - Create a security role for your app
+- Don't attach a default policy, we'll create one.
 
-3 create a policy for your app.
-putobject
-putobjectacl (access control list)
+##Step 3 - Create a policy for your app
+- This is where you set the privileges that your app has within AWS.
+- For this app, the permissions necessary are `s3:PutObject` and `s3:PutObjectAcl` (access control list).
+  - [Policy Docs](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html)
+  - [Policy Options](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actionsconditions.html)
+  - [S3 Policy Options](http://docs.aws.amazon.com/IAM/latest/UserGuide/list_s3.html)
+- ARN should be `arn:aws:s3:::bucketname/*`
+  - [ARN DOCS](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 
-policy docs
-http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actionsconditions.html
-s3 policy docs
-http://docs.aws.amazon.com/IAM/latest/UserGuide/list_s3.html
+##Step 4 - Attach the policy to your app's role
 
-arn is arn:aws:s3:::bucketname
-http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
-policy details
-http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html
+##Step 5 - Create a user for yourself
+- This is to provide you with command line AWS privileges.
+- Attach Elastic Beanstalk policy.
 
-4 attach the policy to your role
+##Step 6 - Create an Elastic Beanstalk application
+- Use the sample application provided.
+- Create an RDS with it.
+- Set the instance role to the one you made.
 
-5 create a user for yourself, show them around user, and attch aws policy eb full access. now warn them that those keys can be used to launch instances.
+##Step 7 - Set up S3 Bucket
+- Put bucket name in `env.sh` file and in the Elastic Beanstalk environment variables.
 
-6 go to eb and create an application
-create an rds with it
-env tags
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html
-set instance role to the one you made
+##Step 8 - Add external access to the RDS
+- Add a line to it's security group.
+- Check it out using MySQL Workbench.
+- Add RDS environment variables to `env.sh`.
 
-7 as it runs, set up an s3 bucket
-explain cors etc also
-put bucket name in env file and in eb env vars
-(wouldn't surprise me if there is a native way to do this)
+##Step 9 - Run server
+- Has a line in the DB been created?
 
-8 add anywhere access to rds database
+##Step 10 - Upload some files
+- Go to S3 and look at the file permissions.
 
-9 add db envs and look at db in workbench
+##Step 11 - Initialise Elastic Beanstalk
+- `eb init`
+- What has it created?
+- Why has the `.gitignore` been edited?
 
-10 run server
+##Step 12 - Deploy!
+- `eb deploy`
 
-11 upload some files and look at their permissions
+* * *
 
-12 eb init, choose ireland, choose aplcation. remind them this is their eb permissions at work
-see how gitignore changes
+##Challenge
+- Change the code so that it deletes the old picture when adding new ones. ([Hint](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html))
 
-13 see site then got throuh code and look at the sdk
+* * *
 
-eb deploy docs -
-http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-deploy.html
+**Useful:**  
+- [AWS Node SDK Docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/_index.html)
+- [EB Deploy Docs](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-deploy.html)
+- [AWS Environment Variables](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-environment)
+- [Accessing instances using SSH](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
+- [Service Roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts-roles.html?console_help=true)
 
-env var docs -
-http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-environment
-
-do user key stuff
-
-make role for the app too
-
-then create application
-
-(with an rds)
-
-do all the setup with the sample application
-
-then command line to create and deploy and environment 
-
-edit sql security group
-
-https://console.aws.amazon.com/iam/home?region=eu-west-1#policies
-
-http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html
-
-being asked about connect via ssh
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html
-
-
-service roles
-https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts-roles.html?console_help=true
-
-s3 docs
-    // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
+**Extras:**  
+- Build tools and AWS prestart
+- Billing alerts
+- `.ebextensions`
+- EB logs
+- Multi Factor Authentication

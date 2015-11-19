@@ -27,7 +27,4 @@ build/Release
 node_modules
 
 env.sh
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+.eslintrc

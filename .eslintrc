@@ -13,8 +13,6 @@
   },
   globals: {
     require: true,
-    webix: true,
-    $: true,
-    $$: true
+    $: true
   }
 }
