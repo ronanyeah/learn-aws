@@ -19,6 +19,7 @@ extras:
 - billing alerts
 - eb extensions
 - eb logs
+- multi factor
 
 pre -
 go through the repo as well saying quickly what the code does and when everyone is cool with that, start going through the AWS steps
@@ -33,8 +34,15 @@ steps-
 putobject
 putobjectacl (access control list)
 
+policy docs
+http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actionsconditions.html
+s3 policy docs
+http://docs.aws.amazon.com/IAM/latest/UserGuide/list_s3.html
+
 arn is arn:aws:s3:::bucketname
 http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+policy details
+http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html
 
 4 attach the policy to your role
 
@@ -61,6 +69,8 @@ put bucket name in env file and in eb env vars
 
 12 eb init, choose ireland, choose aplcation. remind them this is their eb permissions at work
 see how gitignore changes
+
+13 see site then got throuh code and look at the sdk
 
 eb deploy docs -
 http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-deploy.html

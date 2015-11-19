@@ -25,7 +25,6 @@ module.exports = {
     // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
     var s3Params = {
       Bucket: process.env.S3_BUCKET,
-      CacheControl: 'public, max-age=946080000',
       ContentType: 'image',
       ACL: 'public-read',
       Key: randomId(10),
@@ -38,7 +37,7 @@ module.exports = {
       } else {
         content.update({
           picture: '//s3-eu-west-1.amazonaws.com/' + process.env.S3_BUCKET + '/' + s3Params.Key,
-          caption: req.body.caption.toLowerCase()
+          caption: req.body.caption
         }, {
           where: {
             id: 1
